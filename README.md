@@ -5,8 +5,10 @@
 ![Python](https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-Async%20Proxy-009688?logo=fastapi&logoColor=white)
 ![React](https://img.shields.io/badge/React-Vite-61DAFB?logo=react&logoColor=black)
+![WebSockets](https://img.shields.io/badge/Realtime-WebSockets-FF6F00)
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Status](https://img.shields.io/badge/Status-Active-brightgreen)
+![Last Commit](https://img.shields.io/github/last-commit/ananthakrishnanks347-maker/sentinel-ai-waf)
 
 Sentinel-AI defends web applications against the OWASP Top 10, zero-day anomalies, and prompt-injection attacks. Known attack signatures (SQLi, XSS, path traversal) are caught in microseconds by a local regex engine, while ambiguous or novel payloads are escalated to an LLM for deeper reasoning — all without adding noticeable latency to legitimate traffic.
 
@@ -16,14 +18,28 @@ Sentinel-AI defends web applications against the OWASP Top 10, zero-day anomalie
 
 ## 📑 Table of Contents
 
+- [Why Sentinel-AI](#-why-sentinel-ai)
 - [Key Features](#-key-features)
 - [Architecture](#-architecture)
+- [Project Structure](#-project-structure)
 - [Screenshots](#-screenshots)
 - [Tech Stack](#-tech-stack)
 - [Quick Start](#-quick-start)
 - [Running the Application](#-running-the-application)
 - [Roadmap](#-roadmap)
+- [Security Note](#-security-note)
 - [License](#-license)
+- [Author](#-author)
+
+---
+
+## 💡 Why Sentinel-AI
+
+Traditional WAFs rely purely on static signatures — fast, but blind to novel or obfuscated attacks. Pure LLM-based filtering catches more, but is too slow to sit in the critical path of every request. Sentinel-AI takes a **hybrid approach**:
+
+- Known, high-confidence attack patterns (SQLi, XSS, path traversal) are blocked instantly by a local regex engine — zero added latency.
+- Anything ambiguous, novel, or resembling a prompt-injection attempt against an AI backend is escalated to an LLM for contextual reasoning before a verdict is made.
+- Every decision — allowed or blocked — is streamed live to a dashboard so the defense is auditable, not a black box.
 
 ---
 
@@ -64,6 +80,24 @@ Sentinel-AI defends web applications against the OWASP Top 10, zero-day anomalie
 
 ---
 
+## 📂 Project Structure
+
+```text
+sentinel-ai-waf/
+├── waf_server/          # FastAPI reverse proxy + regex engine + LLM analyzer
+│   ├── main.py
+│   └── requirements.txt
+├── dashboard/            # React + Vite + Tailwind live dashboard
+│   ├── src/
+│   └── package.json
+├── test_attacks.py       # Attack simulation script
+├── assets/                # README screenshots
+├── .gitignore
+└── README.md
+```
+
+---
+
 ## 📸 Screenshots
 
 **Live Security Dashboard**
@@ -100,10 +134,9 @@ Requests are classified in real time — allowed traffic passes through as `200 
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/YOUR_GITHUB_USERNAME/ai-waf-dashboard.git
-cd ai-waf-dashboard
+git clone https://github.com/ananthakrishnanks347-maker/sentinel-ai-waf.git
+cd sentinel-ai-waf
 ```
-> Replace `YOUR_GITHUB_USERNAME` with your GitHub handle.
 
 ### 2. Configure the backend WAF
 ```bash
@@ -165,6 +198,23 @@ Watch the dashboard update instantly as malicious traffic is flagged, scored, an
 
 ---
 
+## 🔐 Security Note
+
+Sentinel-AI is a personal/portfolio project built for learning and demonstration purposes. It has not undergone a formal third-party security audit and should not be deployed as a sole line of defense in a production environment without further hardening, testing, and review.
+
+---
+
 ## 📄 License
 
 This project is open-source and available under the [MIT License](LICENSE).
+
+---
+
+## 👤 Author
+
+**Ananthakrishnan K.S**
+Aspiring Penetration Tester / Security Researcher
+
+[![GitHub](https://img.shields.io/badge/GitHub-ananthakrishnanks347--maker-181717?logo=github)](https://github.com/ananthakrishnanks347-maker)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ananthakrishnan-ks-)
+[![TryHackMe](https://img.shields.io/badge/TryHackMe-Profile-212C42?logo=tryhackme&logoColor=white)](https://tryhackme.com/p/Ananthakrishnank.s)
